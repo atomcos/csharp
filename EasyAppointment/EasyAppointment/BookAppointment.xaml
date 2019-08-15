@@ -1,0 +1,96 @@
+﻿<Window x:Class="EasyAppointment.BookAppointment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:EasyAppointment"
+        mc:Ignorable="d"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Title="Book Appointment Wizard" Height="730" Width="601.234">
+    <xctk:Wizard FinishButtonClosesWindow="True" Next="Wizard_Next" Finish="Wizard_Finish" >
+        <xctk:WizardPage x:Name="Page1" PageType="Interior"
+                             Title="Step 1"
+                             Description="Select doctor name" Height="650"
+                             NextPage="{Binding ElementName=Page2}">
+            <xctk:WizardPage.Content>
+                <Grid>
+                    <Label x:Name="label1" Content="Doctor Name" HorizontalAlignment="Left" Height="29" Margin="78,15,0,0" VerticalAlignment="Top" Width="90"/>
+                    <TextBox Name="tbDoctorName" TextChanged="TbDoctorName_TextChanged" HorizontalAlignment="Left" Height="29" Margin="176,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
+                    <CheckBox x:Name="ckbUseMDocName" Checked="CkbUseMDocName_Checked" Content="Using Microphone" HorizontalAlignment="Left" Height="19" Margin="177,79,0,0" VerticalAlignment="Top" Width="155"/>
+                    <ListView Name="lvDoctors" HorizontalAlignment="Left" Height="300" Margin="177,128,0,-302" VerticalAlignment="Top" Width="232">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="110" DisplayMemberBinding="{Binding FirstName}">
+                                    <GridViewColumnHeader Content="First Name"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="110" DisplayMemberBinding="{Binding LastName}">
+                                    <GridViewColumnHeader Content="Last Name"/>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </Grid>
+            </xctk:WizardPage.Content>
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="Page2" PageType="Interior"
+                             Title="Step 2"
+                             Description="Select doctor available time" Height="440" >
+            <xctk:WizardPage.Content>
+                <Grid Height="550"  Margin="0,-80,0,0">
+                    <Calendar Name="cldAppointmentDate" SelectedDatesChanged="CldAppointmentDate_SelectedDatesChanged" HorizontalAlignment="Left" Height="460" Margin="40,100,0,0" VerticalAlignment="Top" Width="270"/>
+                    <Label x:Name="label" Content="Available Time:" HorizontalAlignment="Left" Height="31" Margin="345,70,0,0" VerticalAlignment="Top" Width="89"/>
+                    <Label x:Name="label_Copy" Content="Select date:" HorizontalAlignment="Left" Height="31" Margin="40,70,0,0" VerticalAlignment="Top" Width="89"/>
+                    <ListView Name="lvAvailableTimes" HorizontalAlignment="Left" Height="166" Margin="350,100,0,0" VerticalAlignment="Top" Width="235">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding StartTime}">
+                                    <GridViewColumnHeader Content="Start Time"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="100" DisplayMemberBinding="{Binding EndTime}">
+                                    <GridViewColumnHeader Content="End Time"/>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </xctk:WizardPage.Content>
+        </xctk:WizardPage>
+        <xctk:WizardPage x:Name="LastPage" PageType="Interior"
+                             Title="Step 3"
+                             
+                             Description="Patient info"
+                             CanFinish="True" >
+            <xctk:WizardPage.Content>
+                <Grid>
+
+                    <Label x:Name="label15" Content="Patient Name:" HorizontalAlignment="Left" Height="24" Margin="28,40,0,0" VerticalAlignment="Top" Width="94"/>
+                    <TextBox x:Name="tbPatientName" KeyUp="TbPatientName_KeyUp" HorizontalAlignment="Left" Height="24" Margin="122,40,0,0" TextWrapping="Wrap" Text="Search Name or Medical Insurance Number" VerticalAlignment="Top" Width="247"/>
+                    <CheckBox x:Name="ckbUseMPatName" Checked="CkbUseMPatName_Checked" Content="Using Microphone" HorizontalAlignment="Left" Height="23" Margin="36,76,0,0" VerticalAlignment="Top" Width="130"/>
+
+                    <ListView x:Name="lvPatients" HorizontalAlignment="Left" Height="109" Margin="36,104,0,0" VerticalAlignment="Top" Width="510">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="120" DisplayMemberBinding="{Binding FirstName}">
+                                    <GridViewColumnHeader Content="First Name"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" DisplayMemberBinding="{Binding LastName}">
+                                    <GridViewColumnHeader Content="Last Name"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="150" DisplayMemberBinding="{Binding MedInsurance}">
+                                    <GridViewColumnHeader Content="Medical Insurance"/>
+                                </GridViewColumn>
+                                <GridViewColumn Width="120" DisplayMemberBinding="{Binding DateOfBirth}">
+                                    <GridViewColumnHeader Content="Date od Birth"/>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="label_Copy12" Content="Appointment reason:" HorizontalAlignment="Left" Height="37" Margin="28,235,0,0" VerticalAlignment="Top" Width="138"/>
+                    <TextBox x:Name="tbAppointmentReason" HorizontalAlignment="Left" Height="59" Margin="36,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333"/>
+                </Grid>
+            </xctk:WizardPage.Content>
+        </xctk:WizardPage>
+    </xctk:Wizard>
+</Window>

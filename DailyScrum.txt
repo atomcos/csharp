@@ -1,0 +1,142 @@
+2019/05/02 Nataliia
+1. Done since last scrum:
+-
+2. To do until next Scrum:
+- Create a checklist for the following User Stories: User can view all his appointments, Doctor can create prescription, User can print prescription, User can cancel appointment
+3. Need assistance / figure things out
+-
+
+2019/05/02 Jerry
+1. Done since last srum
+-
+2. Plan until next Scrum
+- Create a checklist for the following User Stories: Doctor can generate reports, User can Register, User can Login, Patient can make appointment
+3. Need assistance / figure things out
+-
+
+2019/05/03 Nataliia
+1. Done since last scrum:
+- Created a checklist for the following User Stories: User can view all his appointments, Doctor can create prescription, User can print prescription, User can cancel appointment
+2. To do until next Scrum:
+- Create DB tables, add constraints
+- Discuss and finalize Project proposal
+- Discuss xaml windows design
+3. Need assistance / figure things out
+-
+
+2019/05/03 Jerry
+1. Done since last srum
+- Created a checklist for the following User Stories: Doctor can generate reports, User can Register, User can Login, Patient can make appointment
+2. Plan until next Scrum
+- Create DB tables, add constraints
+- Discuss and finalize Project proposal
+- Discuss xaml windows design
+3. Need assistance / figure things out
+-
+
+2019/05/03 Nataliia
+1. Done since last scrum:
+- Prepared SQL queries
+- Finalized and submitted project proposal
+2. To do until next Scrum:
+- Work on register feature (window and logic)
+3. Need assistance / figure things out
+- Watch tutorials/find library for Calendar
+- Research how to take photos
+
+2019/05/03 Jerry
+1. Done since last srum
+- Created tables in DB
+- Created window mockups for project proposal
+2. Plan until next Scrum
+- Work on login feature (window and logic)
+3. Need assistance / figure things out
+- Research on voice to text
+
+2019/05/06 Nataliia
+1. Done since last scrum:
+- Completed Doctor Registration
+2. To do until next Scrum:
+- Finish Patient registration
+- Insert into User table when doctor is registered
+- Add menu and list appointments to Admin window
+3. Need assistance / figure things out
+- Watch tutorials/find library for Calendar
+
+
+2019/05/06 Jerry
+1. Done since last srum
+- Completed Login
+- Created window for booking appointment in wpf
+2. Plan until next Scrum
+- Finish book appointment wizard
+3. Need assistance / figure things out
+- Research on voice to text
+
+2019/05/07 Nataliia
+1. Done since last scrum:
+- Finished Patient registration
+2. To do until next Scrum:
+- Finish admin main Window (list appointments, view list of doctor, view list of patients, delete/edit doctor/patient)
+3. Need assistance / figure things out
+- Watch tutorials/find library for Calendar
+
+
+2019/05/07 Jerry
+1. Done since last srum
+- Updated book appointment wizard
+2. Plan until next Scrum
+- Finish book appointment wizard
+3. Need assistance / figure things out
+- Research on voice to text
+
+2019/05/08 Nataliia
+1. Done since last scrum:
+- Listed Appointments in Admin window
+2. To do until next Scrum:
+- Finish admin main Window (view list of doctor, view list of patients, delete/edit doctor/patient)
+3. Need assistance / figure things out
+- Watch tutorials/find library for Calendar
+
+
+2019/05/08 Jerry
+1. Done since last srum
+- Finished book appointment wizard
+2. Plan until next Scrum
+- Create a prescription in wpf
+3. Need assistance / figure things out
+- Research on voice to text
+
+2019/05/09 Nataliia
+1. Done since last scrum:
+- Implemented Delete Doctor, Update Doctor, Delete Patient
+2. To do until next Scrum:
+- Complete Edit Patient feature
+3. Need assistance / figure things out
+- Watch tutorials/find library for Calendar
+
+
+2019/05/09 Jerry
+1. Done since last srum
+- Finished Create Prescription feature
+2. Plan until next Scrum
+- Implement Print prescription
+3. Need assistance / figure things out
+- Research on voice to text
+
+2019/05/10 Nataliia
+1. Done since last scrum:
+- Implemented Edit Patient, created Doctor Schedule window and started to implement logic
+2. To do until next Scrum:
+- Complete Doctor Schedule window and logic
+3. Need assistance / figure things out
+- Look for a library to style the application
+
+
+2019/05/10 Jerry
+1. Done since last srum
+- Finished Preview and Print prescription feature
+2. Plan until next Scrum
+- Testing
+3. Need assistance / figure things out
+- Research on voice to text

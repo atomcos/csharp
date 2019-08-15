@@ -1,0 +1,142 @@
+﻿DROP TABLE IF EXISTS Patients;
+
+CREATE TABLE Patients (
+ID INT NOT NULL IDENTITY (1,1), 
+MedicalInsuranceNumber NVARCHAR(15) NOT NULL, 
+FirstName NVARCHAR(50) NOT NULL,  
+LastName NVARCHAR(50) NOT NULL,  
+Gender NVARCHAR(10) NOT NULL, 
+DOB DATE NOT NULL, 
+PatientAddress NVARCHAR(30) NOT NULL, 
+City NVARCHAR(20) NOT NULL, 
+PostalCode NVARCHAR(10) NOT NULL, 
+Province NVARCHAR(4) NOT NULL, 
+Phone NVARCHAR(20) NOT NULL, 
+MedicalCondition NVARCHAR(100) NOT NULL, 
+DateModified DATETIME NOT NULL, 
+Photo varbinary(max) NULL,
+PRIMARY KEY(ID),
+CONSTRAINT CHK_Patient_Gender CHECK (Gender IN ('Male', 'Female'))
+);
+
+DROP TABLE IF EXISTS Doctors;
+
+CREATE TABLE Doctors(
+ID INT NOT NULL IDENTITY (1,1), 
+FirstName NVARCHAR(50) NOT NULL,  
+LastName NVARCHAR(50) NOT NULL,  
+Gender NVARCHAR(10) NOT NULL, 
+DoctorType  NVARCHAR(50) NOT NULL, 
+Specialty NVARCHAR(50) NOT NULL, 
+Office NVARCHAR(10) NOT NULL,  
+Telephone NVARCHAR(20) NOT NULL,  
+IsAvailable TINYINT NOT NULL, 
+Photo VARBINARY(MAX) NULL,
+PRIMARY KEY (ID),
+CONSTRAINT CHK_Doctors_Gender CHECK (Gender IN ('Male', 'Female'))
+)
+;
+
+
+DROP TABLE IF EXISTS Users;
+
+CREATE TABLE Users(
+ID INT NOT NULL IDENTITY (1,1),  
+UserName NVARCHAR(50) NOT NULL, 
+Password NVARCHAR(100) NOT NULL, 
+DoctorId INT NULL, 
+PatientId INT NULL, 
+LastLoginDate DATETIME NOT NULL,
+PRIMARY KEY (ID),
+CONSTRAINT FK_USERS_DOCTORID_DOCTORS_ID FOREIGN KEY (DoctorId) REFERENCES Doctors (Id),
+CONSTRAINT FK_USERS_PATIENTID_PATIENTS_ID FOREIGN KEY (PatientId) REFERENCES Patients (Id)
+);
+
+DROP TABLE IF EXISTS Appointments ;
+
+CREATE TABLE Appointments (
+ID INT NOT NULL IDENTITY (1,1), 
+DoctorId INT NOT NULL, 
+PatientId INT NOT NULL, 
+AppointmentTime DATETIME NOT NULL, 
+AppointmentReason NVARCHAR(100) NOT NULL ,
+PRIMARY KEY (Id),
+CONSTRAINT FK_Appointments_DOCTORID_DOCTORS_ID FOREIGN KEY (DoctorId) REFERENCES Doctors (Id),
+CONSTRAINT FK_Appointments_PATIENTID_PATIENTS_ID FOREIGN KEY (PatientId) REFERENCES Patients (Id)
+)
+;
+
+DROP TABLE IF EXISTS Prescriptions ;
+
+CREATE TABLE Prescriptions (
+ID INT NOT NULL IDENTITY (1,1), 
+PrescriptionDate DATETIME NOT NULL,  
+DoctorId INT NOT NULL, 
+PatientId INT NOT NULL, 
+PrescriptionDetails NVARCHAR(100) NOT NULL ,
+PRIMARY KEY (Id),
+CONSTRAINT FK_Prescriptions_DOCTORID_DOCTORS_ID FOREIGN KEY (DoctorId) REFERENCES Doctors (Id),
+CONSTRAINT FK_Prescriptions_PATIENTID_PATIENTS_ID FOREIGN KEY (PatientId) REFERENCES Patients (Id)
+)
+;
+
+DROP TABLE IF EXISTS DoctorAvailability
+
+CREATE TABLE DoctorAvailability (
+ID INT NOT NULL IDENTITY (1,1), 
+DoctorId INT NOT NULL, 
+AvailableDate DATE NOT NULL,
+StartHour INT NOT NULL,
+EndHour INT NOT NULL,
+PRIMARY KEY (Id),
+CONSTRAINT FK_DoctorAvailability_DOCTORID_DOCTORS_ID FOREIGN KEY (DoctorId) REFERENCES Doctors (Id),
+CONSTRAINT UC_DoctorAvailability UNIQUE(DoctorId, AvailableDate)
+)
+;
+
+ALTER TABLE Prescriptions
+    ADD AppointmentId int NOT NULL;
+
+ALTER TABLE Prescriptions
+    ADD CONSTRAINT  FK_Prescriptions_APPOINTMENTID_APPOINTMENT_ID FOREIGN KEY(AppointmentId) REFERENCES Appointments(Id);
+
+ALTER TABLE Prescriptions
+    DROP CONSTRAINT FK_Prescriptions_DOCTORID_DOCTORS_ID;
+
+ALTER TABLE Prescriptions
+    DROP COLUMN DoctorId;
+
+
+go
+
+
+ALTER TABLE Users
+    DROP CONSTRAINT FK_USERS_PATIENTID_PATIENTS_ID 
+    ;
+    go
+
+ALTER TABLE Users
+    DROP COLUMN PatientId
+    ;
+    go
+
+
+ALTER TABLE Appointments
+    DROP COLUMN AppointmentTime
+    ;
+
+ALTER TABLE Appointments
+    ADD AppointmentDate DATE NULL
+    ;
+
+ALTER TABLE Appointments
+    ADD AppointmentTime NVARCHAR(20) NULL
+    ;
+
+ALTER TABLE Prescriptions
+    DROP CONSTRAINT FK_Prescriptions_PATIENTID_PATIENTS_ID 
+    ;
+
+ALTER TABLE Prescriptions
+    DROP COLUMN PatientId
+    ;
